@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import{Card, Button, Container} from 'react-bootstrap'
+import CommentArea from './CommentArea'
 
 
 /*const SingleBook =(props)=> (
@@ -20,28 +21,18 @@ import{Card, Button, Container} from 'react-bootstrap'
 
  
 class SingleBook extends Component {
-   state = {
-    select:''
-   }
-
-   boxClick = (e) => {
-   if(this.state.select === ""){
-    this.setState({
-      select: "red"
-    })
-
-   }else{
-    this.setState({
-        select: ""
-      })
-   }
-  }
+  state = {
+    selected: false,
+    idBook:""
+}
     render() { 
-    
+      console.log(this.state.idBook)
       return (
+        <>
+       {this.state.selected && <CommentArea bookId = {this.state.idBook} selected = {this.state.selected}/>}
         <Container >
-        <Card style={{backgroundColor: this.state.select, width: '18rem'}}
-        onClick={this.boxClick}>
+        <Card  onClick={(e) => this.setState({ selected: !this.state.selected, idBook: this.props.bookObj.asin  })}
+                style={{ border: this.state.selected ? '3px solid red' : 'none', width: '18rem' }}>
         <Card.Img variant="top" src={this.props.bookObj.img}  />        
         <Card.Body>
           <Card.Title>{this.props.bookObj.title}</Card.Title>
@@ -51,7 +42,10 @@ class SingleBook extends Component {
           </Card.Text>
           <Button >Go somewhere</Button>
         </Card.Body>
-      </Card></Container>);
+      </Card>
+      </Container>
+      </>
+      );
    }
  }
 

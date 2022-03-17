@@ -12,8 +12,7 @@ function App() {
     
     <div className="App">
     <WarningSign name="IM PROPS"/>
-    <MyBadge text="Hello im badge props" color="green"/>
-    <SingleBook bookObj = {book[0]}/> 
+    <MyBadge text="Hello im badge props" color="green"/> 
     <BookList booksArr = {book}/>
        </div>
   );
