@@ -1,8 +1,6 @@
 import { ListGroup} from "react-bootstrap";
 
 
-
-
 const SingleComment = (props) => (
  <>
 <ListGroup>

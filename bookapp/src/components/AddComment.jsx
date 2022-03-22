@@ -1,35 +1,29 @@
-import {Component} from 'react'
+import {useState} from 'react'
 import {Form, Button} from 'react-bootstrap'
 
 
-class AddComment extends Component {
-  state = {
-    comments: {
-        comment: '',
-        rate: '',
-        elementId: this.props.idBook
-       
-      },
-}
+const AddComment = (props) => {
 
+const [comments, setComments] = useState({
+  comment: '',
+  rate: '',
+  elementId: props.idBook
+});
 
-handleChange = (fieldToUpdate, value) => {
-    this.setState({
-      comments: {
-        ...this.state.comments,
-        [fieldToUpdate]: value,
-     
-      },
-    });
+const handleChange = (fieldToUpdate, value) => {
+  setComments({
+    ...comments,
+    [fieldToUpdate]: value,
+  });
   };
 
-      handleSubmit = async (e) => {
+     const handleSubmit = async (e) => {
         e.preventDefault();
     
         try {
             let response = await fetch("https://striveschool-api.herokuapp.com/api/comments", {
               method:'POST',
-              body:JSON.stringify(this.state.comments),
+              body:JSON.stringify(comments),
             headers: {
                 "Content-Type": "application/json",
               "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI4YzJhMjRlYTdiMTAwMTVkMDY3YzkiLCJpYXQiOjE2NDc1MTg0MjMsImV4cCI6MTY0ODcyODAyM30.CdD43Q1LKuq5qsBFX6KGCSGH8-qox4zTvZB48p4MYBA"
@@ -37,7 +31,7 @@ handleChange = (fieldToUpdate, value) => {
               })
               if (response.ok) {
                   alert("form saved!");
-                  this.emptyForm();
+                  emptyForm();
                 } else {
                   alert("something went wrong!");
                 }
@@ -46,8 +40,8 @@ handleChange = (fieldToUpdate, value) => {
               }
             };
           
-            emptyForm = () => {
-              this.setState({
+            const emptyForm = () => {
+              setComments({
                 comments: {
                   comment: '',
                   rate: '',
@@ -56,22 +50,22 @@ handleChange = (fieldToUpdate, value) => {
               });
             };
 
-    render() { 
+    
       
       return (
         <>
             <div>
         
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Your Comment</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter your comment here"
-              value={this.state.comments.comment}
+              value={comments.comment}
             
               onChange={(e) =>
-                this.handleChange("comment", e.target.value)
+                handleChange("comment", e.target.value)
               }
               required
             />
@@ -82,10 +76,10 @@ handleChange = (fieldToUpdate, value) => {
             <Form.Control
               type="text"
               placeholder="Enter your rate here"
-              value={this.state.comments.rate}
+              value={comments.rate}
             
               onChange={(e) =>
-                this.handleChange("rate", e.target.value)
+                handleChange("rate", e.target.value)
               }
               required
             />
@@ -99,7 +93,7 @@ handleChange = (fieldToUpdate, value) => {
       </div>
       </>
       );
-   }
+   
  }
 
   export default AddComment
