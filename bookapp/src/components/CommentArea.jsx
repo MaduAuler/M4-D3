@@ -8,9 +8,9 @@ const CommentArea = (props) => {
 const [stateComments, setComments] = useState([])
 
 
-  useEffect = () =>{
+  useEffect (() =>{
     fetchComments()
-  };
+  }, []);
 
 
   const fetchComments = async () => {

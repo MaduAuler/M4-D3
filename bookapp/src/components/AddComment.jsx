@@ -50,8 +50,6 @@ const handleChange = (fieldToUpdate, value) => {
               });
             };
 
-    
-      
       return (
         <>
             <div>
@@ -84,7 +82,6 @@ const handleChange = (fieldToUpdate, value) => {
               required
             />
           </Form.Group>
-
 
           <Button variant="primary" type="submit">
             Submit
