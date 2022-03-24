@@ -4,17 +4,9 @@ import React from "react"
 
 const BookList =(props)=> (
     
-
-    <Container>
-<Row>
-     {props.booksArr.map((book) => (
-         
-        <Col>
-          <SingleBook bookObj = {book} />
-          </Col>  
-          ))}
-  </Row>
-    </Container>
+<>
+<SingleBook booksArr={props.booksArr} />
+</>
 )
 
 export default BookList 

@@ -54,7 +54,7 @@ const handleChange = (fieldToUpdate, value) => {
         <>
             <div>
         
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} >
           <Form.Group>
             <Form.Label>Your Comment</Form.Label>
             <Form.Control
@@ -83,7 +83,7 @@ const handleChange = (fieldToUpdate, value) => {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" >
             Submit
           </Button>
         </Form>
