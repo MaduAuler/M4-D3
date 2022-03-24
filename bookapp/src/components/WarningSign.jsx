@@ -5,7 +5,7 @@ const WarningSign =(props)=> (
      
      <Alert variant="danger" >
         <Alert.Heading>
-         This is a warning alert which has this props: {props.name}
+         {props}
         </Alert.Heading>
       </Alert>
 

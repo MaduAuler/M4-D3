@@ -4,16 +4,21 @@ import BookList from './components/BookList';
 import MyBadge from './components/MyBadge';
 import WarningSign from './components/WarningSign';
 import book from './data/fantasy.json'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Registration from './components/Registration';
+import NavBar from './components/NavBar';
 
 function App() {
   
   return (
     
-    <div className="App">
-    <WarningSign name="IM PROPS"/>
-    <MyBadge text="Hello im badge props" color="green"/> 
-    <BookList booksArr = {book}/>
-       </div>
+    <BrowserRouter>
+    <NavBar/>
+    <Routes>
+    <Route path= "/" element={ <BookList booksArr = {book}/>}/>
+    <Route path="/registration" element={<Registration/>}/>
+    </Routes>
+       </BrowserRouter>
   );
 }
 
